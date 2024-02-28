@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="allauth-form-inner-content">
+                    {% block all_auth %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
