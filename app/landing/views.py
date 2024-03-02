@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+
+
+from allauth.account.forms import LoginForm
 
 # Create your views here.
 
@@ -11,10 +14,13 @@ def landing(request):
 
     """
 
+    login = LoginForm()
+
     template = 'landing.html'
 
     context = {
         'from_landing': True,
+        'login': login,
     }
 
     return render(request, template, context)

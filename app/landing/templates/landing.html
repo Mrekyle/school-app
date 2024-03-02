@@ -6,7 +6,13 @@
 {% endblock %}
 
 {% block content %}
-    {% block login %}
-
-    {% endblock %}
+    <div class="container">
+        <div class="row">
+            <form method="POST" action="{% url 'student_portal' %}" tags="entrance,login">
+                {% csrf_token %}
+                {{ login }}
+                <button>Login</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
