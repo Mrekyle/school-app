@@ -72,6 +72,9 @@ INSTALLED_APPS = [
 
     'landing',
     'portal',
+    'driving_school',
+    'students',
+    'instructors'
 
 
 ]

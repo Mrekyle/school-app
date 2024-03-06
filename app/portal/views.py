@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import Student, Instructor, Owner
+
 # Create your views here.
 
 
@@ -18,6 +20,13 @@ def portal(request):
         template = 'instructor_portal.html'
     else:
         template = 'student_portal.html'
+
+    user = request.user.username
+    print(user)
+    if request.user.is_authenticated:
+        user = request.user.username
+
+        print('admin', user)
 
     context = {
         'student': True,

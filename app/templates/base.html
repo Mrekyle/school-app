@@ -45,8 +45,9 @@
                 includes owner
             {% elif instructor %}
                 includes instructor
-            {% else %}
+            {% elif student %}
                 includes student
+            {% else %}    
             {% endif %}
         </header>
         <main>
