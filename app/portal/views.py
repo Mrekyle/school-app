@@ -1,48 +1,38 @@
 from django.shortcuts import render
+from django.contrib import messages
 
-from .models import Student, Instructor, Owner
+from django.contrib.auth.decorators import login_required
+from portal.decorators import allowed_users
+
 
 # Create your views here.
 
-
-def portal(request):
+@login_required(login_url='landing')
+@allowed_users(allowed_roles=['admin'])
+def admin_portal(request):
     """
-        Portal Processing
+        Admin portal 
     """
-    # check the user role inside of the user model thats been extended to show a different page. Then depending on the
-    # user from page context show a different dashboard using includes.
-
-    if request.user.is_superuser:
-        template = 'admin_portal.html'
-    elif request.user.is_staff:
-        template = 'owner_portal.html'
-    elif request.user.is_staff:
-        template = 'instructor_portal.html'
-    else:
-        template = 'admin_portal.html'
 
     if request.user.is_authenticated:
-        user = request.user.username
+        messages.info(request, 'User logged in as admin')
 
-        print('admin', user)
+    template = 'admin_portal.html'
 
     context = {
-        'student': True,
-        'instructor': True,
-        'owner': True,
-        'admin': True,
 
     }
 
     return render(request, template, context)
 
 
-def admin_settings(request):
+@login_required(login_url='landing')
+def owner_portal(request):
     """
-        Admin Account settings pages
+        Driving school owner portal 
     """
 
-    template = 'admin_settings.html'
+    template = 'owner_portal.html'
 
     context = {
 

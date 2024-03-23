@@ -72,11 +72,6 @@ INSTALLED_APPS = [
 
     'landing',
     'portal',
-    'driving_school',
-    'students',
-    'instructors'
-
-
 ]
 
 MIDDLEWARE = [
@@ -190,8 +185,6 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-
-AUTH_USER_MODEL = 'portal.User_Extended'
 
 # EMAIL CONTROLS
 
