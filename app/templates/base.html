@@ -40,7 +40,7 @@
     <body>
         <header>
             {% if admin %}
-                includes admin
+                {% include 'includes/admin_nav.html' %}
             {% elif owner %}
                 includes owner
             {% elif instructor %}

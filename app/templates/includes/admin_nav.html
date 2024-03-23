@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary-subtle">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark-subtle">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
@@ -15,16 +15,16 @@
                   </li>
                     <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-person-fill"></i> <span class="ms-1 d-none d-sm-inline">User Managment</span> </a>
+                            <i class="fs-4 bi-person-fill"></i> <span class="ms-1 d-none d-sm-inline">User Management</span> </a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">School's</span></a>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Driving Schools</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Instructor's</span></a>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Driving Instructors</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Student's</span></a>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Student Drivers</span></a>
                             </li>
                         </ul>
                     </li>
@@ -43,7 +43,8 @@
                         <span class="d-none d-sm-inline mx-1 text-black">{{ user }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                        <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'admin_settings' %}">Account Settings</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

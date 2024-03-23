@@ -19,10 +19,8 @@ def portal(request):
     elif request.user.is_staff:
         template = 'instructor_portal.html'
     else:
-        template = 'student_portal.html'
+        template = 'admin_portal.html'
 
-    user = request.user.username
-    print(user)
     if request.user.is_authenticated:
         user = request.user.username
 
@@ -33,6 +31,20 @@ def portal(request):
         'instructor': True,
         'owner': True,
         'admin': True,
+
+    }
+
+    return render(request, template, context)
+
+
+def admin_settings(request):
+    """
+        Admin Account settings pages
+    """
+
+    template = 'admin_settings.html'
+
+    context = {
 
     }
 
