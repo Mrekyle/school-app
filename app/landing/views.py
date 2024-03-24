@@ -27,9 +27,32 @@ def landing(request):
 
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
+        """
+        
+        Filtering each users groups to check what portal they have access to
+
+        Then authenticating the user and sending them to the correct portal.
+        Providing the login details match and are able to be authenticated.
+
+        """
+
+        admin = user.groups.filter(name='admin').exists()
+        owner = user.groups.filter(name='owner').exists()
+        instructor = user.groups.filter(name='instructor').exists()
+        student = user.groups.filter(name='student').exists()
+
+        if admin:
             login(request, user)
-            return redirect('portal')
+            return redirect('admin_portal')
+        elif owner:
+            login(request, user)
+            return redirect('owner_portal')
+        elif instructor:
+            login(request, user)
+            return redirect('instructor_portal')
+        elif student:
+            login(request, user)
+            return redirect('student_portal')
         else:
             messages.info(
                 request, f'Username or Password is incorrect. Please try again.')
@@ -46,7 +69,7 @@ def logoutUser(request):
     """
         Handles the user logging out of the application
 
-        By redirecting them to the home page of the app.
+        By redirecting them to the base landing page of the app.
     """
     logout(request)
     return redirect('landing')
