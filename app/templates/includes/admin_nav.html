@@ -1,46 +1,50 @@
 <div class="container-fluid">
     <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark-subtle">
+        <div class="col-auto col-md-12 px-sm-2 px-0 bg-dark-subtle">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <div class=" mt-2 mb-2 logo-img">
+                    logo
+                    <img src="" alt="">
+                </div>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
                         <a href="" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Live Site</span>
+                            <i class="fs-4 fas fa-globe"></i> <span class="ms-1 d-none d-sm-inline">Live Site</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                      <a href="" class="nav-link align-middle px-0">
-                          <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                      <a href="{% url 'admin_portal' %}" class="nav-link align-middle px-0">
+                          <i class="fs-4 fas fa-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                       </a>
                   </li>
-                    <li>
+                    <li class="nav-item">
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-person-fill"></i> <span class="ms-1 d-none d-sm-inline">User Management</span> </a>
+                            <i class="fs-4 fas fa-user"></i> <span class="ms-1 d-none d-sm-inline ">User Management</span> </a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Driving Schools</span></a>
+                            <li class="">
+                                <a href="{% url 'school_management' %}" class="nav-link px-0 ps-3"> <span class="d-none d-sm-inline">Driving Schools</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Driving Instructors</span></a>
+                                <a href="#" class="nav-link px-0 ps-3"> <span class="d-none d-sm-inline">Driving Instructors</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Student Drivers</span></a>
+                                <a href="#" class="nav-link px-0 ps-3"> <span class="d-none d-sm-inline">Student Drivers</span></a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-currency-pound"></i> <span class="ms-1 d-none d-sm-inline">Finances</span></a>
+                        <a href="{% url 'finance_management' %}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 fas fa-sterling-sign"></i> <span class="ms-1 d-none d-sm-inline">Finances</span></a>
                     </li>
                     <li>
-                      <a href="#" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-envelope-fill"></i> <span class="ms-1 d-none d-sm-inline">Message Center</span></a>
+                      <a href="{% url 'message_center' %}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 fas fa-envelope"></i> <span class="ms-1 d-none d-sm-inline">Message Center</span></a>
                     </li>
                 </ul>
                 <hr>
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1 text-black">{{ user }}</span>
+                        <i class="icon fas fa-gear"></i><span class="d-none d-sm-inline mx-1 text-black">{{ user }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                         <li>
@@ -57,10 +61,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col py-3">
-            {% block admin %}
-
-            {% endblock %}
-        </div>
+       </div>
     </div>
+ </div>

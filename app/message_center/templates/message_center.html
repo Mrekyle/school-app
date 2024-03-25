@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+    Message Center
+{% endblock %}
+
+{% block content %}
+<div class="container main-container">
+    <div class="col-12">
+       <div class="row">
+          <div class="col-3">
+             {% if admin %}
+                {% include 'includes/admin_nav.html' %}
+             {% endif %}
+          </div>
+          <div class="col-9">
+             <div class="row">
+                <div class="col-12 text-lg-center">hello world </div>
+             </div>
+          </div>
+       </div>   
+    </div>
+ </div>
+{% endblock %}

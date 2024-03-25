@@ -6,7 +6,22 @@
 {% endblock %}
 
 {% block content %}
-Admin Portal
-<a href="">school_management</a>
-<a href="{% url 'logout' %}">Logout</a>
+<div class="container main-container">
+   <div class="col-12">
+      <div class="row">
+         <div class="col-3">
+            {% if admin %}
+               {% include 'includes/admin_nav.html' %}
+            {% endif %}
+         </div>
+         <div class="col-9">
+            <div class="row">
+               <div class="col-4">1</div>
+               <div class="col-4">2</div>
+               <div class="col-4">3</div>
+            </div>
+         </div>
+      </div>   
+   </div>
+</div>
 {% endblock %}
