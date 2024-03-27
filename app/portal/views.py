@@ -17,7 +17,7 @@ def admin_portal(request):
     template = 'admin_portal.html'
 
     context = {
-        'admin': True,
+
     }
 
     return render(request, template, context)

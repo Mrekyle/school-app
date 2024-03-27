@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load has_group %}
 
 {% block page_title %}
     Message Center
@@ -11,15 +10,6 @@
     <div class="col-12">
        <div class="row">
           <div class="col-3">
-            {% if request.user|has_group:'admin' %}
-               {% include 'includes/admin_nav.html' %}
-            {% elif request.user|has_group:'owner' %}
-               {% include 'includes/owner_nav.html' %}
-            {% elif request.user|has_group:'instructor' %}
-               {% include 'includes/instructor_nav.html' %}
-            {% elif request.user|has_group:'student' %}
-               {% include 'includes/student_nav.html' %}
-            {% endif %}
           </div>
           <div class="col-9">
              <div class="row">

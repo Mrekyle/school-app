@@ -107,8 +107,11 @@ TEMPLATES = [
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
-                'crispy_forms.templatetags.crispy_forms_field'
-            ]
+                'crispy_forms.templatetags.crispy_forms_field',
+            ],
+            'libraries': {
+                'has_group': 'message_center.templatetags.check_groups',
+            }
         },
     },
 ]
