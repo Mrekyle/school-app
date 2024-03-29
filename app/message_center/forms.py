@@ -27,9 +27,10 @@ class SupportForm(forms.ModelForm):
         self.fields['name'].widget.attrs['placeholder'] = 'John Smith'
         self.fields['email'].widget.attrs['placeholder'] = 'john.smith@example.com'
         self.fields['text_field'].widget.attrs['placeholder'] = 'Enter your message here....'
+        # self.fields['driving_school'].widget.attrs['placeholder'] = 'Your driving school'
 
         # Setting base class and reasons to support form
         for field in self.fields:
             self.fields['reason'].choices = reason
-            self.fields[field].widget.attrs['class'] = 'rounded-0 mb-2'
+            self.fields[field].widget.attrs['class'] = 'rounded-1 mb-2 form-control'
             self.fields[field].label = False

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
@@ -50,17 +50,18 @@ def support(request):
         form = SupportForm(request.POST)
         if request.method == 'POST':
             if form.is_valid():
-                support_form = form.save()
+                support_form = form.save(commit=True)
                 messages.success(
                     request, f'Thank you for contacting us. We will get back to you as soon as our team have reviewed your email.')
 
-                name = form.cleaned_data('name')
-                email = form.cleaned_data('email')
-                reason = form.cleaned_data('reason')
-                text = form.cleaned_data('text_field')
+                name = request.POST.get('name')
+                email = request.POST.get('email')
+                # driving_school = form.cleaned_data['driving_school']
+                reason = form.cleaned_data['reason']
+                text = request.POST.get('text_field')
                 subject = f'New Support Request from {name}'
                 subject_copy = f'COPY: {subject}'
-                send_copy = request.post.get('send-copy')
+                send_copy = request.POST.get('send-copy')
 
                 """
                     Contact email
@@ -72,6 +73,7 @@ def support(request):
                     New Support Request:
 
                     Name: {name}
+                    Driving School: 
                     Reason: {reason}
                 
                     {text}
@@ -102,6 +104,7 @@ def support(request):
                         New Support Request:
 
                         Name: {name}
+                        Driving School: 
                         Reason: {reason}
                     
                         {text}
@@ -120,6 +123,10 @@ def support(request):
                         from_email=settings.DEFAULT_FROM_EMAIL,
                         recipient_list=[email]
                     )
+            else:
+                messages.error(
+                    request, f'Oop\'s.. something has gone wrong. Please check the form and try again')
+                return redirect('support')
 
     template = 'support.html'
 

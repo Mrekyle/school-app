@@ -1,4 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .main-container {
     margin: 0;
     padding: 0;
+}
+
+.btn {
+    max-width: 10rem;
+}
+
+.b-line {
+    border-bottom: 3px solid black;
+}
+
+.f-bold {
+    font-weight: bold;
+}
+
+.fieldset {
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 25px 25px 25px 25px;
+}
+
+.info-wrap .dbox .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.484);
+}
+
+.info-wrap .dbox .icon span {
+    font-size: 20px;
+    color: #fff;
+}
+
+.info-wrap .dbox {
+    width: 100%;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 25px;
+}
+
+.info-wrap h3 {
+    color: #fff;
+}
+
+.info-wrap .dbox .text {
+    width: calc(100% - 50px);
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-white {
+    color: white;
 }

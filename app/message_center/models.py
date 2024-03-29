@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -11,6 +10,7 @@ class Support(models.Model):
 
     name = models.CharField(max_length=25, blank=True, null=True)
     email = models.EmailField(max_length=50, blank=True, null=True)
+    driving_school = models.TextField(max_length=25, blank=True, null=True)
     reason = models.ForeignKey(
         'SupportReason', on_delete=models.SET_NULL, null=True, blank=True)
     text_field = models.TextField()

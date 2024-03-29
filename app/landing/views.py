@@ -32,7 +32,7 @@ def landing(request):
         Filtering each users groups to check what portal they have access to
 
         Then authenticating the user and sending them to the correct portal.
-        Providing the login details match and are able to be authenticated.
+        Providing the login details match and are able to be
 
         """
 
