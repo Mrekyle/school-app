@@ -3,12 +3,12 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def student_management(request):
+def lesson_management(request):
     """
-        Student management for the application
+        Driving lesson management
     """
 
-    template = 'student_management.html'
+    template = 'lesson_management.html'
 
     context = {
 

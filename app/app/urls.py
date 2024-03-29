@@ -29,6 +29,7 @@ urlpatterns = [
     path('schools/', include('driving_school.urls')),
     path('finance/', include('finances.urls')),
     path('messages/', include('message_center.urls')),
+    path('booking/', include('lessons.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'app.views.handler404'

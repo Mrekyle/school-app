@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load has_group %}
 
 {% block page_title %}
     Driving School Management
@@ -10,9 +11,9 @@
     <div class="col-12">
        <div class="row">
           <div class="col-3">
-             {% if admin %}
-                {% include 'includes/admin_nav.html' %}
-             {% endif %}
+            {% if request.user|has_group:'admin' %}
+               {% include 'includes/admin_nav.html' %}
+            {% endif %}
           </div>
           <div class="col-9">
              <div class="row">

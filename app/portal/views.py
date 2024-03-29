@@ -2,10 +2,12 @@ from django.shortcuts import render
 from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
-from portal.decorators import admin_only, owner_only, instructor_only, student_only
 
+from portal.decorators import admin_only, owner_only, instructor_only, student_only
+from message_center.models import Support
 
 # Create your views here.
+
 
 @login_required(login_url='landing')
 @admin_only
@@ -14,10 +16,12 @@ def admin_portal(request):
         Admin portal 
     """
 
+    support_form = Support.objects.all()
+
     template = 'admin_portal.html'
 
     context = {
-
+        'support': support_form
     }
 
     return render(request, template, context)

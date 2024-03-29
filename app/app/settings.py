@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'driving_school',
     'finances',
     'message_center',
+    'lessons',
 ]
 
 MIDDLEWARE = [
