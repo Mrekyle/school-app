@@ -60,3 +60,12 @@ a {
 .text-white {
     color: white;
 }
+
+.sch-edit {
+    font-size: 0.7rem;
+}
+
+.sch-end {
+    margin-left: 20rem;
+    margin-top: 2rem;
+}

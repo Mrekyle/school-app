@@ -8,19 +8,81 @@
 
 {% block content %}
 <div class="container main-container">
-    <div class="col-12">
-       <div class="row">
-          <div class="col-3">
+   <div class="col-12">
+      <div class="row">
+         <div class="col-2">
             {% if request.user|has_group:'admin' %}
                {% include 'includes/admin_nav.html' %}
             {% endif %}
-          </div>
-          <div class="col-9">
-             <div class="row">
-                <div class="col-12 text-lg-center">hello world </div>
-             </div>
-          </div>
-       </div>   
-    </div>
- </div>
+         </div>
+         <div class="col-10">
+            <div class="row">
+               <div class="col-12">
+                  <p class="main-title mt-2 ms-2">Driving School Management</p>
+                  <hr class="w-50">
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-12">
+                  <div class="row">
+                     <div class="col-7">
+                        <div class="row">
+                           <div class="col-12">
+                              <div class="card">
+                                 <div class="card-title ps-4 pt-2">
+                                    <p class="f-bold">Driving Schools <span class="sch-end"><a class="btn btn-success" href="{% url 'add_school' %}" aria-label="Add a new driving school" rel="opener">Add New School</a></span></p>
+                                 </div>
+                                    <div class="card-body">
+                                       <div class="table-responsive">
+                                          <table class="table table-sm">
+                                             <thead>
+                                                <tr>
+                                                   <td scope="col" class="p-2 f-bold">School Name</td>
+                                                   <td scope="col" class="p-2 f-bold">Instructor's</td>
+                                                   <td scope="col" class="p-2 f-bold">Student's</td>
+                                                   <td scope="col" class="p-2 f-bold">Subscription</td>
+                                                   <td scope="col" class="p-2 f-bold">Edit/Delete</td>
+                                                </tr>
+                                             </thead>
+                                                {% for school in schools %}
+                                                <tr>
+                                                   <td class="col-4 p-2 w25">
+                                                      <p><a href="#" rel="opener" aria-label="Open school info" class="">{{ school.name }}</a></p>
+                                                   </td>
+                                                   <td class="col-1 p-2 w-25">
+                                                      <p>{{ school.instructors }} count</p>
+                                                   </td>
+                                                   <td class="col-1 p-2 w-25">
+                                                      <p>{{ school.students }} count</p>
+                                                   </td>
+                                                   <td class="col-1 p-2 w-25">
+                                                      <p>{{ school.subscription_plan }}</p>
+                                                   </td>
+                                                   <td class="col-5 pt-3 sch-edit">
+                                                      <a href="{% url 'edit_school' school.id %}" class="text-info" aria-label="" rel=""><i class="fas fa-pencil"></i> Edit </a><span> / </span>
+                                                      <a href="{% url 'delete_school' school.id %}" class="text-danger" aria-label="" rel="">Delete <i class="fas fa-trash-can"></i></a>
+                                                   </td>
+                                                </tr>
+                                                {% endfor %}
+                                          </table>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     <div class="col-5">
+                        <div class="row">
+                           <div class="col-10">
+                              <div class="card ms-4">hello world </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>   
+   </div>
+</div>
 {% endblock %}
