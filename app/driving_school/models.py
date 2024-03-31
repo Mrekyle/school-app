@@ -1,6 +1,7 @@
+import uuid
 from django.db import models
 
-from portal.models import Instructors, Students, Subscription
+from portal.models import Instructors, Students, Owner, Subscription
 
 # Create your models here.
 
@@ -10,20 +11,24 @@ class DrivingSchool(models.Model):
         Driving schools model
     """
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date_joined = models.DateField(auto_now_add=True)
     name = models.CharField(max_length=50, blank=True, null=True)
     school_email = models.EmailField(max_length=30, blank=True, null=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     website = models.CharField(max_length=50, blank=True, null=True)
     location = models.CharField(max_length=50, null=True, blank=True)
+    # logo = models.ImageField()
 
     franchise_fee = models.DecimalField(
         max_digits=20, decimal_places=2, null=True, default=0)
     # lesson_types = models.ForeignKey(
     #     'LessonTypes', on_delete=models.CASCADE, null=True, blank=True)
 
+    # owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+    # instructors = models.ForeignKey(
+    #     Instructors, on_delete=models.CASCADE)
     # students = models.ForeignKey(Students, on_delete=models.CASCADE)
-    # instructors = models.ForeignKey(Instructors, on_delete=models.CASCADE)
     # subscription_plan = models.ForeignKey(
     # Subscription, on_delete=models.CASCADE)
 

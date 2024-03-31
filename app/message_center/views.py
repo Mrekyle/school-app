@@ -7,13 +7,13 @@ from .models import Support
 from .forms import SupportForm
 
 from django.contrib.auth.decorators import login_required
-from portal.decorators import admin_only
+from portal.decorators import admin_only, allowed_users
 
 # Create your views here.
 
 
 @login_required(login_url='landing')
-@admin_only
+@allowed_users(allowed_roles=['admin', 'owners', 'instructors'])
 def message_center(request):
     """
         Message center Home 

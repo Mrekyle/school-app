@@ -204,6 +204,8 @@ ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 
+AUTH_USER_MODEL = 'portal.UserManagement'
+
 # EMAIL CONTROLS
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

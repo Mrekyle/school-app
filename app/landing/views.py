@@ -36,23 +36,14 @@ def landing(request):
 
         """
 
-        admin = user.groups.filter(name='admin').exists()
-        owner = user.groups.filter(name='owner').exists()
-        instructor = user.groups.filter(name='instructor').exists()
-        student = user.groups.filter(name='student').exists()
+        # admin = user.groups.filter(name='admin').exists()
+        # owner = user.groups.filter(name='owner').exists()
+        # instructor = user.groups.filter(name='instructor').exists()
+        # student = user.groups.filter(name='student').exists()
 
-        if admin:
+        if user is not None:
             login(request, user)
             return redirect('admin_portal')
-        elif owner:
-            login(request, user)
-            return redirect('owner_portal')
-        elif instructor:
-            login(request, user)
-            return redirect('instructor_portal')
-        elif student:
-            login(request, user)
-            return redirect('student_portal')
         else:
             messages.info(
                 request, f'Username or Password is incorrect. Please try again.')
@@ -60,6 +51,7 @@ def landing(request):
     template = 'landing.html'
 
     context = {
+        'landing': True
     }
 
     return render(request, template, context)

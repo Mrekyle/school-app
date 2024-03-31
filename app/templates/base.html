@@ -43,20 +43,73 @@
         <main>
 
             {% if messages %}
+                {% if landing %}
+
+                {% else %}
                 <div class="message-container">
                     {% for message in messages %}
-                        <div class="alert alert-warning alert-dismissible fade show position-fixed top-0 end-0 p-3 mt-3 me-3" role="alert">
-                            <div class="toast-header">
-                                <strong class="me-auto">ALERT</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            <hr class="w-75 text-center">
-                                <div class="toast-body">
-                                {{ message }}
+                        {% with message.level as level %}
+                            <!-- ERROR -->
+                            {% if level == 40 %}
+                                <div class="custom-alert alert alert-dismissible fade show position-fixed top-0 end-0 mt-3 me-3 border border-black-subtle rounded-bottom-4 shadow" role="alert">
+                                    <div class="w-100 toast-capper bg-danger rounded-4"></div>
+                                    <div class="toast-header">
+                                        <i class="fas fa-triangle-exclamation me-2"></i>
+                                        <strong class="me-auto">{{ request.user }}</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <hr class="">
+                                    <div class="toast-body">
+                                        {{ message }}
+                                    </div>
                                 </div>
-                        </div>
+                            <!-- WARNING -->
+                            {% elif level == 30 %}
+                                <div class="custom-alert alert alert-dismissible fade show position-fixed top-0 end-0 mt-3 me-3 border border-black-subtle rounded-bottom-4 shadow" role="alert">
+                                    <div class="w-100 toast-capper bg-warning-subtle rounded-4"></div>
+                                    <div class="toast-header">
+                                        <i class="fas fa-triangle-exclamation me-2"></i>
+                                        <strong class="me-auto mt-2">{{ request.user }}</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <hr class="">
+                                    <div class="toast-body">
+                                        {{ message }}
+                                    </div>
+                                </div>
+                            <!-- SUCCESS  -->
+                            {% elif level == 25 %}
+                                <div class="custom-alert alert alert-dismissible fade show position-fixed top-0 end-0 mt-3 me-3 border border-black-subtle rounded-bottom-4 shadow" role="alert">
+                                    <div class="w-100 toast-capper bg-success rounded-4"></div>
+                                    <div class="toast-header">
+                                        <i class="fas fa-check me-2"></i>
+                                        <strong class="me-auto">{{ request.user }}</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <hr class="">
+                                    <div class="toast-body">
+                                        {{ message }}
+                                    </div>
+                                </div>
+                            <!-- INFO -->
+                            {% else %}
+                                <div class="custom-alert alert alert-dismissible fade show position-fixed top-0 end-0 mt-3 me-3 border border-black-subtle rounded-bottom-4 shadow" role="alert">
+                                    <div class="w-100 toast-capper bg-info rounded-4"></div>
+                                    <div class="toast-header">
+                                        <i class="fas fa-circle-exclamation me-2"></i>
+                                        <strong class="me-auto">{{ request.user }}</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <hr class="">
+                                    <div class="toast-body">
+                                        {{ message }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
                     {% endfor %}
                 </div>
+                {% endif %}
             {% endif %}
 
             {% block content %}

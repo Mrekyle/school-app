@@ -1,17 +1,18 @@
+
+/* CORE CSS */
+
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.main-container {
-    margin: 0;
-    padding: 0;
+
+a {
+    text-decoration: none;
 }
 
-.btn {
-    max-width: 10rem;
-}
+/* HELPER CLASSES  */
 
 .b-line {
     border-bottom: 3px solid black;
@@ -20,6 +21,58 @@ body {
 .f-bold {
     font-weight: bold;
 }
+
+.main-container {
+    margin: 0;
+    padding: 0;
+}
+
+.text-white {
+    color: white;
+}
+
+/* BUTTONS */
+
+.btn {
+    max-width: 10rem;
+}
+
+/* ALERTS */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    /* z-index means that it will always be placed on top of everything if the number is higher than everything else  */
+    z-index: 9999999999;
+}
+
+.custom-alert {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 5px;
+}
+
+.toast-header {
+    padding-left: 0.6rem;
+    padding-top: 0.6rem;
+}
+
+.toast-body {
+    padding: 0.6rem;
+}
+
+.alert {
+    padding: 0;
+}
+
+/* PORTAL APP */
+
+
+
+/* SUPPORT APP */
 
 .fieldset {
     padding: 1rem;
@@ -53,13 +106,7 @@ body {
     width: calc(100% - 50px);
 }
 
-a {
-    text-decoration: none;
-}
-
-.text-white {
-    color: white;
-}
+/* SCHOOL APP  */
 
 .sch-edit {
     font-size: 0.7rem;
