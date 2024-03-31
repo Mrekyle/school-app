@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.decorators import login_required
 
@@ -17,11 +18,13 @@ def admin_portal(request):
     """
 
     support_form = Support.objects.all()
+    create_user = UserCreationForm
 
     template = 'admin_portal.html'
 
     context = {
-        'support': support_form
+        'support': support_form,
+        'create_user': create_user,
     }
 
     return render(request, template, context)

@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
+
 
 # from driving_school.models import DrivingSchool
 
@@ -7,7 +8,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 
-class UserManagement(AbstractUser):
+class UserManagement(User):
     """
         Extending base user class
     """
