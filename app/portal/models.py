@@ -1,3 +1,4 @@
+from django.contrib.auth.models import Group
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -16,7 +17,12 @@ class UserManagement(User):
     phone_number = models.CharField(max_length=14, blank=True, null=True)
     gender = models.ForeignKey('Gender', on_delete=models.SET_NULL, null=True)
     bio = models.TextField()
+    group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
+
     # age = models.CharField(max_length=2, null=True, blank=True)
+
+    class Meta():
+        verbose_name_plural = 'User Management'
 
 
 class Owner(UserManagement):
