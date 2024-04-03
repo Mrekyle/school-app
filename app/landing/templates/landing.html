@@ -11,7 +11,7 @@
 
 {% block content %}
 
-<div class="container h-100">
+<!-- <div class="container h-100">
     <div class="d-flex justify-content-center h-100">
         <div class="user_card">
             <div class="d-flex justify-content-center">
@@ -53,5 +53,56 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<section class="container">
+
+    <div class="image-section">
+      <div class="image-wrapper">
+        <img src="{% static 'media/mesh-gradient.png' %}" alt="">
+      </div>
+
+      <div class="content-container">
+        <h1 class="section-heading">Transforming the Driving industry, <span>One step at a time</span></h1>
+        <p class="section-paragraph">Every step forward is a step towards knowledge. Embrace the journey.</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-wrapper">
+        <div class="logo-container">
+          <a href="#" class="logo-container">
+            <img src="./logo.png" alt="Logo">
+          </a>
+        </div>
+
+        <h2>Welcome Back!</h2>
+        <p>Enter your credentials to access your account.</p>
+        <form method="POST" class="form" enctype="multipart/form-data" action="#">
+            {% csrf_token %}
+            <div class="input-container">
+            <div class="form-group">
+                <label for="user"><i class="fas fa-user"></i> Username</label>
+                <input type="text" id="user" name="username" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="password"><i class="fas fa-key"></i> Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            </div>
+            <div class="remember-forgot">
+            <div class="remember-me">
+                <input type="checkbox" value="remember-me" id="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
+            <a href="#">Forgot password?</a>
+            </div>
+            <button class="login-btn">Log In</button>
+        </form>
+        <div class="or-divider">or</div>
+        <button class="acc-request"> 
+          <span>Don't have an account and need one? </span>
+        </button>
+      </div>
+    </div>
+  </section>
 {% endblock %}

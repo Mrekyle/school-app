@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
 from .models import UserManagement
+from driving_school.models import DrivingSchool
 
 
 class CreateCustomUser(UserCreationForm):
@@ -17,13 +18,16 @@ class CreateCustomUser(UserCreationForm):
         'owner': 'Owner'
     }
 
-    username = forms.CharField(label='username', min_length=2, max_length=25)
+    username = forms.CharField(
+        label='username', min_length=2, max_length=25)
     email = forms.EmailField(label='email')
     password1 = forms.CharField(label='password', widget=forms.PasswordInput)
     password2 = forms.CharField(
         label='Confirm password', widget=forms.PasswordInput)
     group = forms.ChoiceField(
         widget=forms.Select, choices=(['Student', 'Student'], ['Instructor', 'Instructor'], ['Owner', 'Owner']), required=True, label='User group')
+    # school = forms.ChoiceField(
+    #     widget=forms.Select, choices=DrivingSchool, required=True)
 
     def username_clean(self):
         username = self.cleaned_data['username'].lower()

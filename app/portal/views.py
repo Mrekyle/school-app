@@ -26,6 +26,8 @@ def admin_portal(request):
 
     """
         User creation 
+
+        Assigning users to correct groups and schools
     """
     if request.method == 'POST':
         create_user = CreateCustomUser(request.POST)
@@ -47,7 +49,6 @@ def admin_portal(request):
                     messages.success(
                         request, mark_safe(f'{username} was created successfully!<br><hr><br> Group: <span class="f-bold">{student}</span> School: <span class="f-bold">SCHOOL</span>'))
                     return redirect('admin_portal')
-
                 elif group == 'Instructor':
 
                     create_user = create_user.save()
@@ -59,7 +60,6 @@ def admin_portal(request):
                     messages.success(
                         request, mark_safe(f'{username} was created successfully!<br><hr><br> Group: <span class="f-bold">{instructor}</span> School: <span class="f-bold">SCHOOL</span>'))
                     return redirect('admin_portal')
-
                 elif group == 'Owner':
 
                     create_user = create_user.save()
