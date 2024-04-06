@@ -8,8 +8,9 @@ from django.contrib.auth.decorators import login_required
 
 from portal.decorators import admin_only, owner_only, instructor_only, student_only
 from message_center.models import Support
-from .forms import CreateCustomUser
-from .models import Owner
+from .forms import CreateCustomUser, CreateInstructor, CreateOwner, CreateStudent
+from .models import Owner, Instructors, Students
+from driving_school.models import DrivingSchool
 
 # Create your views here.
 
@@ -21,8 +22,20 @@ def admin_portal(request):
         Admin portal 
     """
 
-    support_form = Support.objects.all()
+    support = Support.objects.all()
+    support_count = support.count()
+
+    school = DrivingSchool.objects.all()
+    school_count = school.count()
+    instructor = Instructors.objects.all()
+    instructor_count = instructor.count()
+    students = Students.objects.all()
+    student_count = students.count()
+
     create_user = CreateCustomUser
+    instructor_acc = CreateInstructor
+    student_acc = CreateStudent
+    owner_acc = CreateOwner
 
     """
         User creation 
@@ -78,8 +91,14 @@ def admin_portal(request):
     template = 'admin_portal.html'
 
     context = {
-        'support': support_form,
+        'support': support_count,
         'create_user': create_user,
+        'schools': school_count,
+        'instructors': instructor_count,
+        'students': student_count,
+        'student_acc': student_acc,
+        'instructor_acc': instructor_acc,
+        'owner_acc': owner_acc,
     }
 
     return render(request, template, context)

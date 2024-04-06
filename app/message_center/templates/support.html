@@ -2,151 +2,127 @@
 {% load static %}
 {% load has_group %}
 
+{% block extra_css %}
+    <!-- <link rel="stylesheet" href="{% static 'css/landing.css' %}"> -->
+{% endblock %}
+
 {% block page_title %}
    Admin Portal
 {% endblock %}
 
 {% block content %}
 <div class="container main-container">
-   <div class="col-12">
-      <div class="row">
-         <div class="col-2">
-            {% if request.user|has_group:'admin' %}
-                {% include 'includes/admin_nav.html' %}
-            {% elif request.user|has_group:'owner' %}
-                {% include 'includes/owner_nav.html' %}
-            {% elif request.user|has_group:'instructor' %}
-                {% include 'includes/instructor_nav.html' %}
-            {% elif request.user|has_group:'student' %}
-                {% include 'includes/student_nav.html' %}
-            {% endif %}
-         </div>
-         <div class="col-10">
-            <div class="row">
-                <div class="col-12">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 mb-2 mt-2">
-                                <h3>Help Center</h3>
-                                <hr class="w-50">
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-lg-10 col-md-12">
-                                <div class="wrapper">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-7 d-flex align-items-stretch">
-                                            <div class="contact-wrap w-100 p-md-5 p-4">
-                                                <h3 class="mb-4">Get in touch</h3>
-                                                    <div id="form-message-warning" class="mb-4"></div>
-                                                        {{ form.errors }}
-                                                        <form method="POST" id="contactForm" name="contactForm" novalidate="novalidate">
-                                                        {% csrf_token %}
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        {{ form.name|as_crispy_field }}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        {{ form.email|as_crispy_field }}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        {{ form.reason|as_crispy_field }}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        {{ form.text_field|as_crispy_field}}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <input type="checkbox" value="Send me a copy" id="send-copy" class=""><span class="me-4 ps-2">Send me a copy</span>
-                                                                        <input type="submit" value="Send Message" class="btn btn-primary ms-5">
-                                                                        <div class="submitting"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                        {% for message in messages %}
-                                                            {% if message.tags == 'error' %}
-                                                                <div class=" mt-3 p-2 text-center bg-warning-subtle shadow col-12 border border-danger-subtle rounded">
-                                                                    <p class="text-danger f-bold" id="messages">{{ message }}</p>
-                                                                </div>
-                                                            {% elif message.tags == 'success' %}
-                                                                <div class=" mt-3 p-2 text-center bg-success-subtle shadow col-12 border border-success-subtle rounded">
-                                                                    <p class=" f-bold" id="messages">{{ message }}</p>
-                                                                </div>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-5 d-flex align-items-stretch">
-                                                    <div class="info-wrap bg-primary w-100 p-lg-5 p-4">
-                                                        <h3 class="mb-4 mt-md-4">Contact us</h3>
-                                                            <div class="dbox w-100 d-flex align-items-start">
-                                                                <div class="icon d-flex align-items-center justify-content-center">
-                                                                    <span class="fa fa-map-marker"></span>
-                                                                </div>
-                                                                <div class="text ms-4">
-                                                                    <p class="text-white">
-                                                                        <span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="dbox w-100 d-flex align-items-center">
-                                                                <div class="icon d-flex align-items-center justify-content-center">
-                                                                    <span class="fa fa-phone"></span>
-                                                            </div>
-                                                            <div class="text ms-4">
-                                                                <p>
-                                                                    <span>Phone:</span> <a href="tel://12321" class="text-white">+ 1235 2355 98</a>
-                                                                </p>
-                                                            </div>
-                                                    </div>
-                                                        <div class="dbox w-100 d-flex align-items-center">
-                                                            <div class="icon d-flex align-items-center justify-content-center">
-                                                                <span class="fa fa-paper-plane"></span>
-                                                            </div>
-                                                                <div class="text ms-4">
-                                                                    <p>
-                                                                        <span>Email:</span> <a href="mailto:info@yoursite.com" class="text-white">info@yoursite.com</a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="dbox w-100 d-flex align-items-center">
-                                                                <div class="icon d-flex align-items-center justify-content-center">
-                                                                    <span class="fas fa-globe"></span>
-                                                                </div>
-                                                                <div class="text ms-4">
-                                                                    <p>
-                                                                        <span>Website:</span> <a href="#" class="text-white" aria-label="Opens the apps main website" target="_blank" rel="no-opener">yoursite.com</a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-3">
+                {% if request.user|has_group:'admin' %}
+                    {% include 'includes/admin_nav.html' %}
+                {% elif request.user|has_group:'owner' %}
+                    {% include 'includes/owner_nav.html' %}
+                {% elif request.user|has_group:'instructor' %}
+                    {% include 'includes/instructor_nav.html' %}
+                {% elif request.user|has_group:'student' %}
+                    {% include 'includes/student_nav.html' %}
+                {% endif %}
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-8 mb-2 mt-2 text-center">
+                                    <h3>Help Center</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-         </div>
-      </div>   
-   </div>
+                <div class="row justify-content-center mt-5 ms-5 ">
+                    <div class="col-lg-7">
+                        <div class="wrapper">
+                            <div class="row w-100">
+                                <div class="contact-wrap p-md-5 p-4">
+                                    <h3 class="mb-4">Get in touch</h3>
+                                    <div id="form-message-warning" class="mb-4">
+                                        {{ form.errors }}
+                                    </div>
+                                    <form method="POST" action="#" class="form" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    {{ form.name|as_crispy_field }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    {{ form.email|as_crispy_field }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    {{ form.reason|as_crispy_field }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    {{ form.text_field|as_crispy_field}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="checkbox" value="Send me a copy" id="send-copy" class=""><span class="me-4 ps-2">Send me a copy</span>
+                                                    <input type="submit" value="Send Message" class="btn btn-primary ms-5">
+                                                    <div class="submitting"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    {% for message in messages %}
+                                        {% if message.tags == 'error' %}
+                                            <div class=" mt-3 p-2 text-center bg-warning-subtle shadow col-12 border border-danger-subtle rounded">
+                                                <p class="text-danger f-bold" id="messages">{{ message }}</p>
+                                            </div>
+                                        {% elif message.tags == 'success' %}
+                                            <div class=" mt-3 p-2 text-center bg-success-subtle shadow col-12 border border-success-subtle rounded">
+                                                <p class=" f-bold" id="messages">{{ message }}</p>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="image-section">
+                            <div class="image-wrapper">
+                                <img src="{% static 'media/mesh-gradient.png' %}" alt="">
+                            </div>
+                            <div class="content-container">
+                                <h1 class="contact-heading"><span>Contact Us</span></h1>
+                                <div class="text ms-4">
+                                    <p class="">
+                                        <span class="fa fa-map-marker me-2"></span><span>Address:</span><br> 198 West 21th Street, Suite 721 New York NY 10016
+                                    </p>
+                                    <p>
+                                        <span class="fa fa-phone me-2"></span><span>Phone:</span> <a href="tel://12321" class=""><br>1235 2355 98</a>
+                                    </p>
+                                    <p>
+                                        <span class="fa fa-paper-plane me-2"></span><span>Email:</span><br> <a href="mailto:info@yoursite.com" class="">info@yoursite.com</a>
+                                    </p>
+                                    <p>
+                                        <span class="fas fa-globe me-2"></span><span>Website:</span><br> <a href="#" class="" aria-label="Opens the apps main website" target="_blank" rel="no-opener">yoursite.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
 </div>
 {% endblock %}

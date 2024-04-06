@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from .models import UserManagement
+from .models import UserManagement, Owner, Students, Instructors
 from driving_school.models import DrivingSchool
 
 
@@ -65,3 +65,29 @@ class CreateCustomUser(UserCreationForm):
             self.cleaned_data['password1']
         )
         return user
+
+
+class CreateStudent(forms.ModelForm):
+    class Meta():
+        model = Students
+        fields = ['default_pickup_location',]
+
+    group = forms.ChoiceField(
+        widget=forms.Select, choices=(['Student', 'Student'],), required=True, label='User group')
+
+
+class CreateInstructor(forms.ModelForm):
+    class Meta():
+        model = Instructors
+        fields = ['car',]
+
+    group = forms.ChoiceField(
+        widget=forms.Select, choices=(['Instructor', 'Instructor'],), required=True, label='User group')
+
+
+class CreateOwner(forms.ModelForm):
+    class Meta():
+        model = Owner
+        fields = ['car',]
+
+    group = forms.BooleanField()

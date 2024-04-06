@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
@@ -13,14 +14,14 @@ from portal.decorators import admin_only, allowed_users
 
 
 @login_required(login_url='landing')
-@allowed_users(allowed_roles=['admin', 'owners', 'instructors'])
+@allowed_users(allowed_roles=['admin'])
 def message_center(request):
     """
         Message center Home 
     """
 
     form = SupportForm
-    model = Support
+    model = Support.objects.all()
 
     template = 'message_center.html'
 
@@ -123,7 +124,10 @@ def support(request):
                         from_email=settings.DEFAULT_FROM_EMAIL,
                         recipient_list=[email]
                     )
+                    return redirect('support')
+                return redirect('support')
             else:
+                form = SupportForm()
                 messages.error(
                     request, f'Oop\'s.. something has gone wrong. Please check the form and try again')
                 return redirect('support')
@@ -131,7 +135,23 @@ def support(request):
     template = 'support.html'
 
     context = {
+        'support': True,
         'form': form,
     }
 
     return render(request, template, context)
+
+
+@login_required(login_url='landing')
+@admin_only
+def delete_message(request, msg_id):
+    """
+        Handles the deletion of a message
+
+    """
+
+    message = get_object_or_404(Support, pk=msg_id)
+    message.delete()
+    messages.success(
+        request, f'Message deleted Successfully')
+    return redirect(reverse('message_center'))

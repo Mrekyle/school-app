@@ -24,12 +24,51 @@
          <div class="col-9">
             <div class="row mt-5">
                <div class="col-4">1</div>
-               <div class="col-4">2</div>
                <div class="col-4">
+                  <div class="row">
+                     <div class="col-12">
+                        <div class="row">
+                           <div class="card">
+                              <div class="card-header">
+                                 Active Accounts
+                              </div>
+                              <div class="card-body">
+                                 <table class="table-responsive table-responsive-md">
+                                    <thead>
+                                       <td>Driving Schools</td>
+                                       <td>Driving Instructors</td>
+                                       <td>Student Drivers</td>
+                                    </thead>
+                                    <tr>
+                                       <td>{{ schools }}</td>
+                                       <td>{{ instructors }}</td>
+                                       <td>{{ students }}</td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="card p-3 mt-5">
+                              <div class="card-header">
+                                 <p>Contact Requests</p>
+                              </div>
+                              <div class="card-body">
+                                 <span>Currently there is:</span><span> {{ support }}</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-4">
+                  <p>Add a user</p>
                   <div class="form-control">
                      <form method="POST" class="form" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ create_user.as_p }}
+                       
+                        {{ owner_acc.as_p }}
                         <button type="submit" class="btn btn-success">Submit</button>
                      </form>
                   </div>

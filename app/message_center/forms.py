@@ -31,6 +31,7 @@ class SupportForm(forms.ModelForm):
 
         # Setting base class and reasons to support form
         for field in self.fields:
+            self.fields[field].widget.attrs['required'] = True
             self.fields['reason'].choices = reason
             self.fields[field].widget.attrs['class'] = 'rounded-1 mb-2 form-control'
             self.fields[field].label = False

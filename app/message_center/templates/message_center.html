@@ -24,9 +24,46 @@
           <div class="col-9">
              <div class="row">
                 <div class="col-12 text-lg-center">
+                  <h2>Message Center</h2>
+                  <small>Coming soon instant messaging. Currently only showing submitted emails to admin support, Showing status updates</small>
                   <a href="{% url 'support' %}">contact form </a>
+                  <hr>
                 </div>
-             </div>
+            </div>
+            <div class="row mt-5 ms-5">
+                  <div class="col-12">
+                     <table class="table table-responsive-lg">
+                        <thead>
+                           <tr>
+                              <td scope="col" class="p-2 f-bold">School Name</td>
+                              <td scope="col" class="p-2 f-bold">User</td>
+                              <td scope="col" class="p-2 f-bold">Contact Email</td>
+                              <td scope="col" class="p-2 f-bold">Contact Reason</td>
+                              <td scope="col" class="p-2 f-bold">Edit/Delete</td>
+                           </tr>
+                        </thead>
+                           {% for support in model %}
+                           <tr>
+                              <td class="col-2 p-2">
+                                 <p></a></p>
+                              </td>
+                              <td class="col-1 p-2 w-25">
+                                 <p>{{ support.name }}</p>
+                              </td>
+                              <td class="col-3 p-2">
+                                 <p>{{ support.email }}</p>
+                              </td>
+                              <td class="col-4 p-2">
+                                 <p>{{ support.reason }}</p>
+                              </td>
+                              <td class="col-2 pt-3 sch-edit">
+                                 <a href="{% url 'delete_message' support.id %}" class="text-danger" aria-label="" rel="">Delete <i class="fas fa-trash-can"></i></a>
+                              </td>
+                           </tr>
+                           {% endfor %}
+                     </table>
+                  </div>
+            </div>
           </div>
        </div>   
     </div>
